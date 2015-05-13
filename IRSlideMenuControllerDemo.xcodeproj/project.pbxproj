@@ -20,6 +20,7 @@
 		A30BDFC81B03B18300DEBF28 /* ReadMe.md in Sources */ = {isa = PBXBuildFile; fileRef = A30BDFC71B03B18300DEBF28 /* ReadMe.md */; };
 		A30BDFCB1B03B57B00DEBF28 /* LeftMenuVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A30BDFCA1B03B57B00DEBF28 /* LeftMenuVC.m */; };
 		A30BDFCE1B03BA7400DEBF28 /* MyVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A30BDFCD1B03BA7400DEBF28 /* MyVC.m */; };
+		A30BDFD11B03BBBC00DEBF28 /* ss1.png in Resources */ = {isa = PBXBuildFile; fileRef = A30BDFD01B03BBBC00DEBF28 /* ss1.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +58,7 @@
 		A30BDFCA1B03B57B00DEBF28 /* LeftMenuVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeftMenuVC.m; sourceTree = "<group>"; };
 		A30BDFCC1B03BA7400DEBF28 /* MyVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyVC.h; sourceTree = "<group>"; };
 		A30BDFCD1B03BA7400DEBF28 /* MyVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyVC.m; sourceTree = "<group>"; };
+		A30BDFD01B03BBBC00DEBF28 /* ss1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ss1.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +83,7 @@
 			isa = PBXGroup;
 			children = (
 				A30BDFC71B03B18300DEBF28 /* ReadMe.md */,
+				A30BDFCF1B03BBBC00DEBF28 /* Screenshots */,
 				A30BDFC01B03A08800DEBF28 /* IRSlideMenuController */,
 				A30BDF961B03961300DEBF28 /* IRSlideMenuControllerDemo */,
 				A30BDFB01B03961300DEBF28 /* IRSlideMenuControllerDemoTests */,
@@ -153,6 +156,14 @@
 				A30BDFC21B03A19900DEBF28 /* UIViewController+IRSlideMenuController.m */,
 			);
 			name = IRSlideMenuController;
+			sourceTree = "<group>";
+		};
+		A30BDFCF1B03BBBC00DEBF28 /* Screenshots */ = {
+			isa = PBXGroup;
+			children = (
+				A30BDFD01B03BBBC00DEBF28 /* ss1.png */,
+			);
+			path = Screenshots;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -236,6 +247,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A30BDFA31B03961300DEBF28 /* Main.storyboard in Resources */,
+				A30BDFD11B03BBBC00DEBF28 /* ss1.png in Resources */,
 				A30BDFA81B03961300DEBF28 /* LaunchScreen.xib in Resources */,
 				A30BDFA51B03961300DEBF28 /* Images.xcassets in Resources */,
 			);
