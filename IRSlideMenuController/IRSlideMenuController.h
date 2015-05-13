@@ -26,10 +26,17 @@ typedef enum _IRSlideMenuPanelState {
 }
 
 
+@property (strong) UIViewController *mainViewController;
+@property (strong) UIViewController *leftMenuViewController;
+
+
 // show the panels
 - (void)showLeftPanelAnimated:(BOOL)animated;
 - (void)hideLeftPanelAnimated:(BOOL)animated;
 
+- (void)changeMainViewController:(UIViewController*)mainViewController close:(BOOL)close;
+
+    
 
 - (id)initWithMainVC:(UIViewController *)mainVC leftMenuVC:(UIViewController *)leftMenuVC;
 

@@ -17,7 +17,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Plo-wO-5f8">
-                                <rect key="frame" x="24" y="103" width="39" height="30"/>
+                                <rect key="frame" x="16" y="72" width="39" height="30"/>
                                 <state key="normal" title="Menu">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -25,24 +25,69 @@
                                     <action selector="menu:" destination="BYZ-38-t0r" eventType="touchUpInside" id="PdA-QT-2H3"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wF8-jz-5hX">
+                                <rect key="frame" x="16" y="256" width="48" height="30"/>
+                                <state key="normal" title="Design">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RLu-18-DWH">
-                                <rect key="frame" x="24" y="155" width="140" height="30"/>
-                                <state key="normal" title="SlideMenuController">
+                                <rect key="frame" x="18" y="102" width="37" height="30"/>
+                                <state key="normal" title="Value">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
                                     <segue destination="DD0-OT-tlR" kind="show" id="S7y-KF-Alg"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fEX-vM-IoM">
+                                <rect key="frame" x="18" y="338" width="44" height="30"/>
+                                <state key="normal" title="Reach">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4wG-Tp-ptJ">
+                                <rect key="frame" x="16" y="514" width="343" height="128"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <string key="text">How flexible and adaptive are you to your customer's feedback and how invested are you in the product to continue to iterate and build better features and an enhanced experience over period of time.</string>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="15"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9KL-0f-3QQ">
+                                <rect key="frame" x="16" y="131" width="343" height="117"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <string key="text">Provides a solution to a problem that customers are willing to pay for. It is about whether your customers would be willing to pay to use your solution or shift from their existing solutions because you solved an intrinsic problem that no other app could do until now.</string>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="15"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" text="Product design, look and feel and usability. " translatesAutoresizingMaskIntoConstraints="NO" id="usf-TX-iIH">
+                                <rect key="frame" x="18" y="284" width="343" height="37"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="15"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ige-tr-Hyj">
+                                <rect key="frame" x="16" y="367" width="343" height="83"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <string key="text">Distribution can literally make or break your mobile app. Getting your app out in the hands of your customers can be challenging thing you can do as an entrepreneur.</string>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="15"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tHj-E9-SSM">
+                                <rect key="frame" x="16" y="476" width="70" height="30"/>
+                                <state key="normal" title="Scalability">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
                         </subviews>
-                        <color key="backgroundColor" red="0.49216494669999999" green="1" blue="0.075065549719999999" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.97975851089922239" green="0.95956014543049717" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <navigationItem key="navigationItem" id="Qdo-2u-8vZ"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="351.5" y="409.5"/>
+            <point key="canvasLocation" x="359.5" y="409.5"/>
         </scene>
         <!--SecondVC-->
         <scene sceneID="7SZ-VP-XvU">
@@ -57,7 +102,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CZm-bp-yuw">
-                                <rect key="frame" x="96" y="106" width="46" height="30"/>
+                                <rect key="frame" x="164" y="90" width="46" height="30"/>
                                 <state key="normal" title="Button">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -73,10 +118,10 @@
             </objects>
             <point key="canvasLocation" x="919.5" y="409.5"/>
         </scene>
-        <!--View Controller-->
+        <!--MyVC-->
         <scene sceneID="52K-Pw-jmr">
             <objects>
-                <viewController id="n2p-Yn-jtG" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="VC2" id="n2p-Yn-jtG" customClass="MyVC" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="SwM-1k-U64"/>
                         <viewControllerLayoutGuide type="bottom" id="W7u-Th-CfE"/>
@@ -84,18 +129,36 @@
                     <view key="view" contentMode="scaleToFill" id="zR9-Ks-7fV">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NqN-iM-8wP">
+                                <rect key="frame" x="16" y="20" width="39" height="30"/>
+                                <state key="normal" title="Menu">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="menu:" destination="n2p-Yn-jtG" eventType="touchUpInside" id="2WJ-5d-PQv"/>
+                                    <action selector="menu:" destination="BYZ-38-t0r" eventType="touchUpInside" id="vpi-Iw-vt0"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Menu 2" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9RI-Tz-bdh">
+                                <rect key="frame" x="158" y="58" width="58" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.97975851089999999" green="0.95956014540000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RTj-Zi-eDl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-185.5" y="1204.5"/>
+            <point key="canvasLocation" x="354.5" y="1146.5"/>
         </scene>
-        <!--View Controller-->
+        <!--Left MenuVC-->
         <scene sceneID="Ysr-DY-9ZL">
             <objects>
-                <viewController storyboardIdentifier="LeftMenuVC" id="Eia-4g-642" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LeftMenuVC" id="Eia-4g-642" customClass="LeftMenuVC" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="raQ-wJ-Uzf"/>
                         <viewControllerLayoutGuide type="bottom" id="Tm8-7d-JQD"/>
@@ -107,18 +170,30 @@
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aOB-fB-G0B">
                                 <rect key="frame" x="88" y="0.0" width="287" height="667"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ofm-Y2-e6h">
-                                        <rect key="frame" x="40" y="67" width="39" height="30"/>
-                                        <state key="normal" title="Menu">
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                    </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Hello" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZrK-1W-yGb">
                                         <rect key="frame" x="40" y="38" width="40" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ofm-Y2-e6h">
+                                        <rect key="frame" x="40" y="98" width="103" height="30"/>
+                                        <state key="normal" title="Menu">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="menu:" destination="Eia-4g-642" eventType="touchUpInside" id="0PJ-HH-1fb"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IZU-lZ-65t">
+                                        <rect key="frame" x="40" y="168" width="103" height="30"/>
+                                        <state key="normal" title="Menu 2">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="menu2:" destination="Eia-4g-642" eventType="touchUpInside" id="mar-OE-FJ5"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>

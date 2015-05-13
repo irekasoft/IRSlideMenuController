@@ -13,10 +13,6 @@
 // Current state of panels. Use KVO to monitor state changes
 @property (nonatomic, readonly) IRSlideMenuPanelState state;
 
-
-@property (strong) UIViewController *mainViewController;
-@property (strong) UIViewController *leftMenuViewController;
-
 @property (strong) UIView *opacityView;
 
 @property (nonatomic, strong) UIView *tapView;
@@ -83,6 +79,26 @@
     
     self.tapView = gesture.view;
     [self showCenterPanel:YES bounce:NO];
+    
+}
+
+- (void)changeMainViewController:(UIViewController*)mainViewController close:(BOOL)close{
+    
+    [self.mainViewController willMoveToParentViewController:nil];
+    [self.mainViewController removeFromParentViewController];
+    [self.mainViewController.view removeFromSuperview];
+    
+
+    
+    self.mainViewController = mainViewController;
+    [self.view insertSubview:self.mainViewController.view atIndex:0];
+    [self addChildViewController:self.mainViewController];
+    
+    
+    if (close) {
+        [self hideLeftPanelAnimated:YES];
+    }
+    
     
 }
 

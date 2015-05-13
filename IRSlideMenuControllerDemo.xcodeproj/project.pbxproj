@@ -18,6 +18,8 @@
 		A30BDFC31B03A19900DEBF28 /* UIViewController+IRSlideMenuController.m in Sources */ = {isa = PBXBuildFile; fileRef = A30BDFC21B03A19900DEBF28 /* UIViewController+IRSlideMenuController.m */; };
 		A30BDFC61B03AE7800DEBF28 /* SecondVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A30BDFC51B03AE7800DEBF28 /* SecondVC.m */; };
 		A30BDFC81B03B18300DEBF28 /* ReadMe.md in Sources */ = {isa = PBXBuildFile; fileRef = A30BDFC71B03B18300DEBF28 /* ReadMe.md */; };
+		A30BDFCB1B03B57B00DEBF28 /* LeftMenuVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A30BDFCA1B03B57B00DEBF28 /* LeftMenuVC.m */; };
+		A30BDFCE1B03BA7400DEBF28 /* MyVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A30BDFCD1B03BA7400DEBF28 /* MyVC.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +53,10 @@
 		A30BDFC41B03AE7800DEBF28 /* SecondVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SecondVC.h; sourceTree = "<group>"; };
 		A30BDFC51B03AE7800DEBF28 /* SecondVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SecondVC.m; sourceTree = "<group>"; };
 		A30BDFC71B03B18300DEBF28 /* ReadMe.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = ReadMe.md; sourceTree = "<group>"; };
+		A30BDFC91B03B57B00DEBF28 /* LeftMenuVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeftMenuVC.h; sourceTree = "<group>"; };
+		A30BDFCA1B03B57B00DEBF28 /* LeftMenuVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeftMenuVC.m; sourceTree = "<group>"; };
+		A30BDFCC1B03BA7400DEBF28 /* MyVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyVC.h; sourceTree = "<group>"; };
+		A30BDFCD1B03BA7400DEBF28 /* MyVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyVC.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,13 +100,17 @@
 		A30BDF961B03961300DEBF28 /* IRSlideMenuControllerDemo */ = {
 			isa = PBXGroup;
 			children = (
+				A30BDFA11B03961300DEBF28 /* Main.storyboard */,
 				A30BDF9B1B03961300DEBF28 /* AppDelegate.h */,
 				A30BDF9C1B03961300DEBF28 /* AppDelegate.m */,
 				A30BDF9E1B03961300DEBF28 /* ViewController.h */,
 				A30BDF9F1B03961300DEBF28 /* ViewController.m */,
-				A30BDFA11B03961300DEBF28 /* Main.storyboard */,
+				A30BDFC91B03B57B00DEBF28 /* LeftMenuVC.h */,
+				A30BDFCA1B03B57B00DEBF28 /* LeftMenuVC.m */,
 				A30BDFC41B03AE7800DEBF28 /* SecondVC.h */,
 				A30BDFC51B03AE7800DEBF28 /* SecondVC.m */,
+				A30BDFCC1B03BA7400DEBF28 /* MyVC.h */,
+				A30BDFCD1B03BA7400DEBF28 /* MyVC.m */,
 				A30BDFA41B03961300DEBF28 /* Images.xcassets */,
 				A30BDFA61B03961300DEBF28 /* LaunchScreen.xib */,
 				A30BDF971B03961300DEBF28 /* Supporting Files */,
@@ -245,7 +255,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A30BDFCB1B03B57B00DEBF28 /* LeftMenuVC.m in Sources */,
 				A30BDFC31B03A19900DEBF28 /* UIViewController+IRSlideMenuController.m in Sources */,
+				A30BDFCE1B03BA7400DEBF28 /* MyVC.m in Sources */,
 				A30BDFA01B03961300DEBF28 /* ViewController.m in Sources */,
 				A30BDF9D1B03961300DEBF28 /* AppDelegate.m in Sources */,
 				A30BDF9A1B03961300DEBF28 /* main.m in Sources */,
