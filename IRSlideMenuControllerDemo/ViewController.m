@@ -7,6 +7,8 @@
 //
 
 #import "ViewController.h"
+#import "IRSlideMenuController.h"
+#import "UIViewController+IRSlideMenuController.h"
 
 @interface ViewController ()
 
@@ -22,6 +24,13 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (IBAction)menu:(id)sender {
+    
+ 
+    [self.slideMenuController showLeftPanelAnimated:YES];
+    
 }
 
 @end

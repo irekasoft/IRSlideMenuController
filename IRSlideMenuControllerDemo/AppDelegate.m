@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "IRSlideMenuController.h"
 
 @interface AppDelegate ()
 
@@ -16,7 +17,18 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
+
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    
+    UIViewController *mainVC = [storyboard instantiateViewControllerWithIdentifier:@"MainVC"];
+    UIViewController *leftMenuVC = [storyboard instantiateViewControllerWithIdentifier:@"LeftMenuVC"];
+
+    
+    IRSlideMenuController *slideMenuController = [[IRSlideMenuController alloc] initWithMainVC:mainVC leftMenuVC:leftMenuVC];
+    
+    
+    self.window.rootViewController = slideMenuController;
+    
     return YES;
 }
 

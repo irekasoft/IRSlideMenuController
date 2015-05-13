@@ -14,6 +14,10 @@
 		A30BDFA51B03961300DEBF28 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A30BDFA41B03961300DEBF28 /* Images.xcassets */; };
 		A30BDFA81B03961300DEBF28 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = A30BDFA61B03961300DEBF28 /* LaunchScreen.xib */; };
 		A30BDFB41B03961300DEBF28 /* IRSlideMenuControllerDemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A30BDFB31B03961300DEBF28 /* IRSlideMenuControllerDemoTests.m */; };
+		A30BDFBF1B03963900DEBF28 /* IRSlideMenuController.m in Sources */ = {isa = PBXBuildFile; fileRef = A30BDFBE1B03963900DEBF28 /* IRSlideMenuController.m */; };
+		A30BDFC31B03A19900DEBF28 /* UIViewController+IRSlideMenuController.m in Sources */ = {isa = PBXBuildFile; fileRef = A30BDFC21B03A19900DEBF28 /* UIViewController+IRSlideMenuController.m */; };
+		A30BDFC61B03AE7800DEBF28 /* SecondVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A30BDFC51B03AE7800DEBF28 /* SecondVC.m */; };
+		A30BDFC81B03B18300DEBF28 /* ReadMe.md in Sources */ = {isa = PBXBuildFile; fileRef = A30BDFC71B03B18300DEBF28 /* ReadMe.md */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +44,13 @@
 		A30BDFAD1B03961300DEBF28 /* IRSlideMenuControllerDemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = IRSlideMenuControllerDemoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A30BDFB21B03961300DEBF28 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A30BDFB31B03961300DEBF28 /* IRSlideMenuControllerDemoTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IRSlideMenuControllerDemoTests.m; sourceTree = "<group>"; };
+		A30BDFBD1B03963900DEBF28 /* IRSlideMenuController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IRSlideMenuController.h; path = IRSlideMenuController/IRSlideMenuController.h; sourceTree = "<group>"; };
+		A30BDFBE1B03963900DEBF28 /* IRSlideMenuController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IRSlideMenuController.m; path = IRSlideMenuController/IRSlideMenuController.m; sourceTree = "<group>"; };
+		A30BDFC11B03A19800DEBF28 /* UIViewController+IRSlideMenuController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIViewController+IRSlideMenuController.h"; path = "IRSlideMenuController/UIViewController+IRSlideMenuController.h"; sourceTree = "<group>"; };
+		A30BDFC21B03A19900DEBF28 /* UIViewController+IRSlideMenuController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIViewController+IRSlideMenuController.m"; path = "IRSlideMenuController/UIViewController+IRSlideMenuController.m"; sourceTree = "<group>"; };
+		A30BDFC41B03AE7800DEBF28 /* SecondVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SecondVC.h; sourceTree = "<group>"; };
+		A30BDFC51B03AE7800DEBF28 /* SecondVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SecondVC.m; sourceTree = "<group>"; };
+		A30BDFC71B03B18300DEBF28 /* ReadMe.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = ReadMe.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +74,8 @@
 		A30BDF8B1B03961300DEBF28 = {
 			isa = PBXGroup;
 			children = (
+				A30BDFC71B03B18300DEBF28 /* ReadMe.md */,
+				A30BDFC01B03A08800DEBF28 /* IRSlideMenuController */,
 				A30BDF961B03961300DEBF28 /* IRSlideMenuControllerDemo */,
 				A30BDFB01B03961300DEBF28 /* IRSlideMenuControllerDemoTests */,
 				A30BDF951B03961300DEBF28 /* Products */,
@@ -86,6 +99,8 @@
 				A30BDF9E1B03961300DEBF28 /* ViewController.h */,
 				A30BDF9F1B03961300DEBF28 /* ViewController.m */,
 				A30BDFA11B03961300DEBF28 /* Main.storyboard */,
+				A30BDFC41B03AE7800DEBF28 /* SecondVC.h */,
+				A30BDFC51B03AE7800DEBF28 /* SecondVC.m */,
 				A30BDFA41B03961300DEBF28 /* Images.xcassets */,
 				A30BDFA61B03961300DEBF28 /* LaunchScreen.xib */,
 				A30BDF971B03961300DEBF28 /* Supporting Files */,
@@ -117,6 +132,17 @@
 				A30BDFB21B03961300DEBF28 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		A30BDFC01B03A08800DEBF28 /* IRSlideMenuController */ = {
+			isa = PBXGroup;
+			children = (
+				A30BDFBD1B03963900DEBF28 /* IRSlideMenuController.h */,
+				A30BDFBE1B03963900DEBF28 /* IRSlideMenuController.m */,
+				A30BDFC11B03A19800DEBF28 /* UIViewController+IRSlideMenuController.h */,
+				A30BDFC21B03A19900DEBF28 /* UIViewController+IRSlideMenuController.m */,
+			);
+			name = IRSlideMenuController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -219,9 +245,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A30BDFC31B03A19900DEBF28 /* UIViewController+IRSlideMenuController.m in Sources */,
 				A30BDFA01B03961300DEBF28 /* ViewController.m in Sources */,
 				A30BDF9D1B03961300DEBF28 /* AppDelegate.m in Sources */,
 				A30BDF9A1B03961300DEBF28 /* main.m in Sources */,
+				A30BDFC61B03AE7800DEBF28 /* SecondVC.m in Sources */,
+				A30BDFC81B03B18300DEBF28 /* ReadMe.md in Sources */,
+				A30BDFBF1B03963900DEBF28 /* IRSlideMenuController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
