@@ -121,10 +121,27 @@
 
     
 }
+
+#pragma mark - swipe handler
+
 -(void)swipeRight:(UISwipeGestureRecognizer*)gestureRecognizer
 {
+    if ([self.mainViewController isKindOfClass:[UINavigationController class]]) {
+        
+        
+        
+        NSArray* vc = [(UINavigationController *)self.mainViewController viewControllers];
+        
+        if ([vc count] > 1) {
+            return;
+        }
+        
+
+    }
+    
     [self showLeftPanelAnimated:YES];
 }
+
 - (void)handleLeftPanGesture:(UIPanGestureRecognizer *)panGesture{
     
     switch (panGesture.state) {
@@ -216,6 +233,7 @@
     } completion:^(BOOL finished) {
         
         [self.opacityView removeFromSuperview];
+        self.opacityView = nil;
         
         for (UIGestureRecognizer *recognizer in self.mainViewController.view.gestureRecognizers) {
             [self.mainViewController.view removeGestureRecognizer:recognizer];
@@ -232,7 +250,7 @@
 
 - (void)showLeftPanelAnimated:(BOOL)animated {
     
-    NSLog(@"hii");
+    NSLog(@"showLeftPanelAnimated");
     [self _showLeftPanel:animated bounce:NO];
     
 }
@@ -244,7 +262,7 @@
 - (void)_showLeftPanel:(BOOL)animated bounce:(BOOL)shouldBounce {
     
     self.state = IRSlideMenuPanelLeftVisible;
-    
+
     if (self.opacityView == nil) {
         
         self.opacityView = [[UIView alloc] initWithFrame:self.mainViewController.view.frame];
@@ -272,10 +290,6 @@
     
 //    [self _loadLeftPanel];
 //    [self _adjustCenterFrame];
-    
-    
-    
-
     
 }
 
