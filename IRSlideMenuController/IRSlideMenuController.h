@@ -19,15 +19,26 @@ typedef enum _IRSlideMenuPanelState {
     IRSlideMenuPanelRightVisible
 } IRSlideMenuPanelState;
 
-@interface IRSlideMenuController : UIViewController {
+//
+//struct LeftPanState {
+//    static var frameAtStartOfPan: CGRect = CGRectZero
+//    static var startPointOfPan: CGPoint = CGPointZero
+//    static var wasOpenAtStartOfPan: Bool = false
+//    static var wasHiddenAtStartOfPan: Bool = false
+//}
+
+@interface IRSlideMenuController : UIViewController <UIGestureRecognizerDelegate>{
     
     CGFloat leftMenuWidth;
+    CGFloat leftMenuWidthPercent;
     
 }
 
 
 @property (strong) UIViewController *mainViewController;
 @property (strong) UIViewController *leftMenuViewController;
+
+@property (strong) UIPanGestureRecognizer *leftPanGesture;
 
 
 // show the panels

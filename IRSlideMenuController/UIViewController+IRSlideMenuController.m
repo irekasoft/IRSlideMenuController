@@ -14,13 +14,26 @@
 
 - (IRSlideMenuController *)slideMenuController {
     UIViewController *iter = self.parentViewController;
+    
     while (iter) {
+        
         if ([iter isKindOfClass:[IRSlideMenuController class]]) {
+            
             return (IRSlideMenuController *)iter;
+            
+        } else if ([iter.parentViewController isKindOfClass:[IRSlideMenuController class]]) {
+            
+            return (IRSlideMenuController *)iter.parentViewController;
+            
+            
         } else if (iter.parentViewController && iter.parentViewController != iter) {
+            
             iter = iter.parentViewController;
+            
         } else {
+            
             iter = nil;
+            
         }
     }
     return nil;

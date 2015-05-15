@@ -218,6 +218,7 @@
 				TargetAttributes = {
 					A30BDF931B03961300DEBF28 = {
 						CreatedOnToolsVersion = 6.3.1;
+						DevelopmentTeam = 23A6EJTDXW;
 					};
 					A30BDFAC1B03961300DEBF28 = {
 						CreatedOnToolsVersion = 6.3.1;
@@ -407,7 +408,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = IRSlideMenuControllerDemo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -417,7 +420,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = IRSlideMenuControllerDemo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -476,6 +481,7 @@
 				A30BDFB91B03961300DEBF28 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		A30BDFBA1B03961300DEBF28 /* Build configuration list for PBXNativeTarget "IRSlideMenuControllerDemoTests" */ = {
 			isa = XCConfigurationList;
@@ -484,6 +490,7 @@
 				A30BDFBC1B03961300DEBF28 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
