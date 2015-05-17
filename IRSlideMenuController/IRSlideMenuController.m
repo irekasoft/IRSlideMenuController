@@ -135,6 +135,13 @@
 
 - (void)handleLeftPanGesture:(UIPanGestureRecognizer *)panGesture{
    
+    if ([self.mainViewController isKindOfClass:[UINavigationController class]]) {
+        
+        NSArray* vc = [(UINavigationController *)self.mainViewController viewControllers];
+        if ([vc count] > 1) {
+            return;
+        }
+    }
     
     switch (panGesture.state) {
         case UIGestureRecognizerStateBegan:{
