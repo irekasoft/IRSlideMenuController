@@ -294,7 +294,11 @@
         [self addTapGestureToView:self.opacityView];
     }
     
-    self.opacityView.layer.opacity = 0;
+    CGFloat width = self.leftMenuViewController.view.frame.size.width;
+    CGFloat leftViewEdgeFloat = self.leftMenuViewController.view.frame.origin.x + width;
+    CGFloat openedLeftRatio = leftViewEdgeFloat/width;
+    self.opacityView.layer.opacity = openedLeftRatio*MAX_OPACITY;
+
     [UIView animateWithDuration:0.5 animations:^{
         self.opacityView.layer.opacity = MAX_OPACITY;
     }];
