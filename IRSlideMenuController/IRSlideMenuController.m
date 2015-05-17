@@ -53,7 +53,7 @@
 
 - (void)_initView {
     
-    leftMenuWidthPercent = 0.9;
+    leftMenuWidthPercent = RATIO_MENU_WIDTH;
     
     [self.view insertSubview:self.mainViewController.view atIndex:0];
     
@@ -63,17 +63,12 @@
     self.leftMenuViewController.view.clipsToBounds = YES;
     
     [self.view insertSubview:self.leftMenuViewController.view atIndex:1];
-    
-//    self.leftMenuViewController.view.transform = CGAffineTransformMakeTranslation(-self.view.frame.size.width*leftMenuWidthPercent, 0);
-    
+
+    // we dont use transformation as we will have pan gesture
     self.leftMenuViewController.view.frame = CGRectMake(-self.view.frame.size.width*leftMenuWidthPercent,
                                                         0,
                                                         self.leftMenuViewController.view.frame.size.width,
                                                         self.leftMenuViewController.view.frame.size.height);
-    
-
-    
-    //
     
 }
 
@@ -81,32 +76,29 @@
 
 - (CGRect)_applyLeftTranslation:(CGPoint)translation toFrame:(CGRect)toFrame{
     
-    NSLog(@"to frame  %@ %f", NSStringFromCGRect(toFrame), leftMenuWidth);
-    
     CGFloat newOrigin = toFrame.origin.x;
     newOrigin += translation.x;
     
-    CGFloat minOrigin = leftMenuWidth;
+//    CGFloat minOrigin = leftMenuWidth;
     CGFloat maxOrigin = 0.0;
     CGRect newFrame = toFrame;
-    
+
+    // if we pan more we will ignore it
     if (newOrigin > maxOrigin) {
         newOrigin = maxOrigin;
     }else if (newOrigin < maxOrigin){
-//        newOrigin = maxOrigin;
+
     }
     
     newFrame.origin.x = newOrigin;
     
-    NSLog(@"%@: new frame %@",NSStringFromCGPoint(translation), NSStringFromCGRect(newFrame));
+//    NSLog(@"%@: new frame %@",NSStringFromCGPoint(translation), NSStringFromCGRect(newFrame));
     
     return newFrame;
     
 }
 
 - (void)_addLeftGestures{
-    
-    //
     
     self.swipeRight =[[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(swipeRight:)];
     self.swipeRight.delegate = self;
@@ -131,31 +123,18 @@
 {
     if ([self.mainViewController isKindOfClass:[UINavigationController class]]) {
         
-        
-        
         NSArray* vc = [(UINavigationController *)self.mainViewController viewControllers];
-        
         if ([vc count] > 1) {
             return;
         }
-        
-
     }
-    
     [self showLeftPanelAnimated:YES];
-}
-
-- (BOOL)isRightOpen{
-    return NO;
 }
 
 #pragma mark - handle pan gesture
 
 - (void)handleLeftPanGesture:(UIPanGestureRecognizer *)panGesture{
-    
-    if ([self isRightOpen] == YES){
-        return;
-    }
+   
     
     switch (panGesture.state) {
         case UIGestureRecognizerStateBegan:{
@@ -170,10 +149,7 @@
         case UIGestureRecognizerStateChanged:{
             
             CGPoint translation = [panGesture translationInView:panGesture.view];
-            
-
-            
-            NSLog(@"translation %@", NSStringFromCGPoint(translation));
+//            NSLog(@"translation %@", NSStringFromCGPoint(translation));
             
             self.leftMenuViewController.view.frame = [self _applyLeftTranslation:translation toFrame:frameAtStartOfPan];
             [self updateOpacityView];
@@ -192,25 +168,15 @@
             BOOL shouldOpen = NO;
             
             if (leftOrigin >= pointOfNoReturn) {
-                NSLog(@"to2 open");
-
                 shouldOpen = YES;
             }else{
-                NSLog(@"to2 close");
-
                 shouldOpen = NO;
             }
             
-            NSLog(@"velocity %f",velocity);
-            
             if (velocity.x >= thresholdVelocity) {
                 shouldOpen = YES;
-                NSLog(@"thresholdVelocity open");
 
-                
             } else if (velocity.x <= -1.0 * thresholdVelocity) {
-                NSLog(@"thresholdVelocity close");
-
                 shouldOpen = NO;
             }
             
@@ -237,10 +203,8 @@
     
 }
 
-- (void)centerPanelTapped:(__unused UIGestureRecognizer *)gesture {
-
-    NSLog(@"hrer");
-    
+- (void)centerPanelTapped:(__unused UIGestureRecognizer *)gesture
+{
     self.tapView = gesture.view;
     [self showCenterPanel:YES bounce:NO];
     
@@ -264,11 +228,12 @@
     
 }
 
-- (void)showCenterPanel:(BOOL)animated bounce:(BOOL)shouldBounce {
+#pragma mark - public method actions
 
+- (void)showCenterPanel:(BOOL)animated bounce:(BOOL)shouldBounce {
     
     self.state = IRSlideMenuPanelCenterVisible;
-    NSLog(@"%s",__PRETTY_FUNCTION__);
+//    NSLog(@"%s",__PRETTY_FUNCTION__);
     
     [self hideLeftPanelAnimated:YES];
     
@@ -278,12 +243,16 @@
 
 - (void)hideLeftPanelAnimated:(BOOL)animated{
 
+
+    
     [UIView animateWithDuration:0.4 delay:0.0 usingSpringWithDamping:1.0 initialSpringVelocity:0.6 options:0 animations:^{
         self.leftMenuViewController.view.frame = CGRectMake(-self.view.frame.size.width*leftMenuWidthPercent,
                                                             0,
                                                             self.leftMenuViewController.view.frame.size.width,
                                                             self.leftMenuViewController.view.frame.size.height);
         self.opacityView.layer.opacity = 0.0;
+       
+        
     } completion:^(BOOL finished) {
         
         [self.opacityView removeFromSuperview];
@@ -296,24 +265,45 @@
             [self.mainViewController.view removeGestureRecognizer:recognizer];
         }
         
+        
     }];
     
 }
 
-#pragma mark - public method action
 
-- (void)showLeftPanelAnimated:(BOOL)animated {
-    
+
+- (void)showLeftPanelAnimated:(BOOL)animated
+{
     NSLog(@"showLeftPanelAnimated");
+    [self _updateOpacityViewMax];
     [self _showLeftPanel:animated bounce:NO];
     
 }
 
 
 
-#pragma mark - Showing Panels
+#pragma mark - Showing Panels (Private)
+
+- (void)_updateOpacityViewMax{
+    
+    if (self.opacityView == nil) {
+        
+        self.opacityView = [[UIView alloc] initWithFrame:self.mainViewController.view.frame];
+        self.opacityView.backgroundColor = [UIColor blackColor];
+        [self.view insertSubview:self.opacityView atIndex:1];
+        [self addTapGestureToView:self.opacityView];
+    }
+    
+    self.opacityView.layer.opacity = 0;
+    [UIView animateWithDuration:0.5 animations:^{
+        self.opacityView.layer.opacity = MAX_OPACITY;
+    }];
+    
+
+}
 
 - (void)updateOpacityView{
+    
     CGFloat width = self.leftMenuViewController.view.frame.size.width;
     CGFloat leftViewEdgeFloat = self.leftMenuViewController.view.frame.origin.x + width;
     CGFloat openedLeftRatio = leftViewEdgeFloat/width;
@@ -329,8 +319,10 @@
         
         [self addTapGestureToView:self.opacityView];
     }
-    self.opacityView.layer.opacity = openedLeftRatio*0.5;
-    NSLog(@"%f",openedLeftRatio);
+    
+    
+    self.opacityView.layer.opacity = openedLeftRatio*MAX_OPACITY;
+
 }
 
 - (void)_showLeftPanel:(BOOL)animated bounce:(BOOL)shouldBounce {
@@ -338,23 +330,20 @@
     self.state = IRSlideMenuPanelLeftVisible;
 
     
-    
     [UIView animateWithDuration:0.4 delay:0.0 usingSpringWithDamping:1.0 initialSpringVelocity:1.2 options:0 animations:^{
-        
-//        self.leftMenuViewController.view.transform = CGAffineTransformMakeTranslation(-leftMenuWidth, 0);
+
         self.leftMenuViewController.view.frame = CGRectMake(0,
                                                             0,
                                                             self.leftMenuViewController.view.frame.size.width,
                                                             self.leftMenuViewController.view.frame.size.height);
-        
+
     } completion:^(BOOL finished) {
         UISwipeGestureRecognizer * swipeLeft=[[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(swipeLeft:)];
         swipeLeft.direction=UISwipeGestureRecognizerDirectionLeft;
         [self.view addGestureRecognizer:swipeLeft];
+
     }];
     
-//    [self _loadLeftPanel];
-//    [self _adjustCenterFrame];
     
 }
 
@@ -370,9 +359,7 @@
         _state = state;
         switch (_state) {
             case IRSlideMenuPanelCenterVisible: {
-
                 self.leftMenuViewController.view.userInteractionEnabled = NO;
-
                 break;
             }
             case IRSlideMenuPanelLeftVisible: {
@@ -386,15 +373,6 @@
         }
     }
 }
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 #pragma mark - UIGestureRecognizerDelegate
 
@@ -403,8 +381,9 @@
     if (gestureRecognizer == self.leftPanGesture) {
         
         CGPoint point = [gestureRecognizer locationInView:gestureRecognizer.view];
-        NSLog(@"point %@", NSStringFromCGPoint(point));
-        
+
+        // this is where the min finger can pan out the
+        // menu
         if (point.x <= X_MAX_LEFT_START) {
             return YES;
         }else{
@@ -413,7 +392,7 @@
         
         
     }else if (gestureRecognizer == self.swipeRight){
-        return NO;
+        return WANT_SWIPE_GESTURE;
     }
     
     return NO;

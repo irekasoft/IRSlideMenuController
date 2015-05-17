@@ -8,10 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
-typedef enum _IRSlideMenuPanelStyle {
-    JASidePanelSingleActive = 0,
-    JASidePanelMultipleActive
-} IRSlideMenuPanelStyle;
+
+
+#define X_MAX_LEFT_START 35
+#define pointOfNoReturnWidth 50
+#define WANT_SWIPE_GESTURE NO
+#define MAX_OPACITY 0.5
+#define RATIO_MENU_WIDTH 0.9
+
 
 typedef enum _IRSlideMenuPanelState {
     IRSlideMenuPanelCenterVisible = 1,
@@ -19,16 +23,6 @@ typedef enum _IRSlideMenuPanelState {
     IRSlideMenuPanelRightVisible
 } IRSlideMenuPanelState;
 
-//
-//struct LeftPanState {
-//    static var frameAtStartOfPan: CGRect = CGRectZero
-//    static var startPointOfPan: CGPoint = CGPointZero
-//    static var wasOpenAtStartOfPan: Bool = false
-//    static var wasHiddenAtStartOfPan: Bool = false
-//}
-
-#define X_MAX_LEFT_START 35
-#define pointOfNoReturnWidth 50
 
 @interface IRSlideMenuController : UIViewController <UIGestureRecognizerDelegate>{
     
@@ -41,8 +35,6 @@ typedef enum _IRSlideMenuPanelState {
     BOOL    wasHiddenAtStartOfPan;
 
 }
-
-
 
 @property (strong) UIViewController *mainViewController;
 @property (strong) UIViewController *leftMenuViewController;
@@ -62,7 +54,7 @@ typedef enum _IRSlideMenuPanelState {
 - (id)initWithMainVC:(UIViewController *)mainVC leftMenuVC:(UIViewController *)leftMenuVC;
 
 // toggle them opened/closed
-- (void)toggleLeftPanel:(id)sender;
+// - (void)toggleLeftPanel:(id)sender;
 
 
 @end
