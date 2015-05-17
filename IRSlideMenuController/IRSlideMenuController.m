@@ -57,7 +57,7 @@
     
     [self.view insertSubview:self.mainViewController.view atIndex:0];
     
-    leftMenuWidth = self.view.frame.size.width * (1 - leftMenuWidthPercent);
+    leftMenuWidth = self.view.frame.size.width * leftMenuWidthPercent;
     
     self.leftMenuViewController.view.frame = CGRectMake(0, 0, self.view.frame.size.width*leftMenuWidthPercent, self.view.frame.size.height);
     self.leftMenuViewController.view.clipsToBounds = YES;
@@ -81,22 +81,24 @@
 
 - (CGRect)_applyLeftTranslation:(CGPoint)translation toFrame:(CGRect)toFrame{
     
+    NSLog(@"to frame  %@ %f", NSStringFromCGRect(toFrame), leftMenuWidth);
+    
     CGFloat newOrigin = toFrame.origin.x;
     newOrigin += translation.x;
     
     CGFloat minOrigin = leftMenuWidth;
     CGFloat maxOrigin = 0.0;
+    CGRect newFrame = toFrame;
     
-     CGRect newFrame = toFrame;
-    
-    if (newOrigin < minOrigin) {
-        newOrigin = minOrigin;
-    }else if (newOrigin > maxOrigin){
+    if (newOrigin > maxOrigin) {
         newOrigin = maxOrigin;
+    }else if (newOrigin < maxOrigin){
+//        newOrigin = maxOrigin;
     }
     
     newFrame.origin.x = newOrigin;
     
+    NSLog(@"%@: new frame %@",NSStringFromCGPoint(translation), NSStringFromCGRect(newFrame));
     
     return newFrame;
     
@@ -106,11 +108,12 @@
     
     //
     
-    UISwipeGestureRecognizer *swipeRight =[[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(swipeRight:)];
-    swipeRight.direction=UISwipeGestureRecognizerDirectionRight;
-    [self.view addGestureRecognizer:swipeRight];
+    self.swipeRight =[[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(swipeRight:)];
+    self.swipeRight.delegate = self;
+    self.swipeRight.direction=UISwipeGestureRecognizerDirectionRight;
+    [self.view addGestureRecognizer:self.swipeRight];
     
-    return;
+    
     
     if (self.leftPanGesture == nil) {
         
@@ -142,12 +145,25 @@
     [self showLeftPanelAnimated:YES];
 }
 
+- (BOOL)isRightOpen{
+    return NO;
+}
+
+#pragma mark - handle pan gesture
+
 - (void)handleLeftPanGesture:(UIPanGestureRecognizer *)panGesture{
+    
+    if ([self isRightOpen] == YES){
+        return;
+    }
     
     switch (panGesture.state) {
         case UIGestureRecognizerStateBegan:{
          
-            self.leftMenuViewController.view;
+            frameAtStartOfPan = self.leftMenuViewController.view.frame;
+            startPointOfPan = [panGesture locationInView:self.view];
+            
+            [self.leftMenuViewController beginAppearanceTransition:YES animated:YES];
             
         }
             break;
@@ -159,12 +175,52 @@
             
             NSLog(@"translation %@", NSStringFromCGPoint(translation));
             
-            //self.leftMenuViewController.view.frame = [self _applyLeftTranslation:translation toFrame:self.leftMenuViewController.view.frame];
-            
+            self.leftMenuViewController.view.frame = [self _applyLeftTranslation:translation toFrame:frameAtStartOfPan];
+            [self updateOpacityView];
         }
             break;
         case UIGestureRecognizerStateEnded:{
             
+            CGPoint velocity = [panGesture velocityInView:panGesture.view];
+            
+            CGFloat thresholdVelocity = 1000.0;
+            CGFloat pointOfNoReturn  = floor(leftMenuWidth)/2;
+            
+            
+            CGFloat leftOrigin = self.leftMenuViewController.view.frame.origin.x + self.leftMenuViewController.view.frame.size.width;
+            
+            BOOL shouldOpen = NO;
+            
+            if (leftOrigin >= pointOfNoReturn) {
+                NSLog(@"to2 open");
+
+                shouldOpen = YES;
+            }else{
+                NSLog(@"to2 close");
+
+                shouldOpen = NO;
+            }
+            
+            NSLog(@"velocity %f",velocity);
+            
+            if (velocity.x >= thresholdVelocity) {
+                shouldOpen = YES;
+                NSLog(@"thresholdVelocity open");
+
+                
+            } else if (velocity.x <= -1.0 * thresholdVelocity) {
+                NSLog(@"thresholdVelocity close");
+
+                shouldOpen = NO;
+            }
+            
+            if (shouldOpen==YES) {
+                [self showLeftPanelAnimated:YES];
+            }else{
+                [self hideLeftPanelAnimated:YES];
+            }
+
+            [self updateOpacityView];
         }
             break;
             
@@ -195,8 +251,6 @@
     [self.mainViewController willMoveToParentViewController:nil];
     [self.mainViewController removeFromParentViewController];
     [self.mainViewController.view removeFromSuperview];
-    
-
     
     self.mainViewController = mainViewController;
     [self.view insertSubview:self.mainViewController.view atIndex:0];
@@ -259,9 +313,12 @@
 
 #pragma mark - Showing Panels
 
-- (void)_showLeftPanel:(BOOL)animated bounce:(BOOL)shouldBounce {
+- (void)updateOpacityView{
+    CGFloat width = self.leftMenuViewController.view.frame.size.width;
+    CGFloat leftViewEdgeFloat = self.leftMenuViewController.view.frame.origin.x + width;
+    CGFloat openedLeftRatio = leftViewEdgeFloat/width;
     
-    self.state = IRSlideMenuPanelLeftVisible;
+    
 
     if (self.opacityView == nil) {
         
@@ -269,10 +326,18 @@
         self.opacityView.backgroundColor = [UIColor blackColor];
         
         [self.view insertSubview:self.opacityView atIndex:1];
-        self.opacityView.layer.opacity = 0.5;
         
         [self addTapGestureToView:self.opacityView];
     }
+    self.opacityView.layer.opacity = openedLeftRatio*0.5;
+    NSLog(@"%f",openedLeftRatio);
+}
+
+- (void)_showLeftPanel:(BOOL)animated bounce:(BOOL)shouldBounce {
+    
+    self.state = IRSlideMenuPanelLeftVisible;
+
+    
     
     [UIView animateWithDuration:0.4 delay:0.0 usingSpringWithDamping:1.0 initialSpringVelocity:1.2 options:0 animations:^{
         
@@ -333,6 +398,27 @@
 
 #pragma mark - UIGestureRecognizerDelegate
 
+- (BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer{
+    
+    if (gestureRecognizer == self.leftPanGesture) {
+        
+        CGPoint point = [gestureRecognizer locationInView:gestureRecognizer.view];
+        NSLog(@"point %@", NSStringFromCGPoint(point));
+        
+        if (point.x <= X_MAX_LEFT_START) {
+            return YES;
+        }else{
+            return NO;
+        }
+        
+        
+    }else if (gestureRecognizer == self.swipeRight){
+        return NO;
+    }
+    
+    return NO;
+    
+}
 
 
 @end
