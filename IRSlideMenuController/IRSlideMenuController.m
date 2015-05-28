@@ -34,7 +34,6 @@
 - (id)initWithMainVC:(UIViewController *)mainVC leftMenuVC:(UIViewController *)leftMenuVC{
     
     if (self = [super init]) {
-
         
         self.mainViewController     = mainVC;
         self.leftMenuViewController = leftMenuVC;
@@ -42,13 +41,49 @@
         [self addChildViewController:mainVC];
         [self addChildViewController:leftMenuVC];
         
+        if ((UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) && (UIInterfaceOrientationIsLandscape(self.interfaceOrientation) )) {
+            [self _initViewFor_iPad];
+            self.isSideBySide = YES;
+        }else{
+            [self _initView];
+        }
         
-        [self _initView];
+
         [self _addLeftGestures];
     }
     
     
     return self;
+}
+
+- (void)_initViewFor_iPad {
+    
+    leftMenuWidthPercent = RATIO_MENU_WIDTH;
+    
+    CGFloat leftToMainRatio = 0.3;
+
+    self.isSideBySide_MainFrame = CGRectMake(self.mainViewController.view.frame.size.width *leftToMainRatio, 0,
+                                             self.mainViewController.view.frame.size.width * (1- leftToMainRatio),
+                                             self.mainViewController.view.frame.size.height);
+    self.mainViewController.view.frame = self.isSideBySide_MainFrame;
+    
+    [self.view insertSubview:self.mainViewController.view atIndex:0];
+    
+    leftMenuWidth = self.view.frame.size.width * leftMenuWidthPercent;
+    
+    
+    self.leftMenuViewController.view.frame =  CGRectMake(0, 0, self.view.frame.size.width*leftToMainRatio, self.mainViewController.view.frame.size.height);
+;
+    self.leftMenuViewController.view.clipsToBounds = YES;
+    
+    [self.view insertSubview:self.leftMenuViewController.view atIndex:1];
+    
+    // we dont use transformation as we will have pan gesture
+//    self.leftMenuViewController.view.frame = CGRectMake(-self.view.frame.size.width*leftMenuWidthPercent,
+//                                                        0,
+//                                                        self.leftMenuViewController.view.frame.size.width,
+//                                                        self.leftMenuViewController.view.frame.size.height);
+    
 }
 
 - (void)_initView {
@@ -224,6 +259,11 @@
     [self.mainViewController.view removeFromSuperview];
     
     self.mainViewController = mainViewController;
+    
+    if (self.isSideBySide) {
+        self.mainViewController.view.frame = self.isSideBySide_MainFrame;
+    }
+    
     [self.view insertSubview:self.mainViewController.view atIndex:0];
     [self addChildViewController:self.mainViewController];
     
@@ -250,17 +290,20 @@
 
 - (void)hideLeftPanelAnimated:(BOOL)animated{
 
-
+    if (self.isSideBySide) {
+        return;
+    }
+    
     
     [UIView animateWithDuration:0.4 delay:0.0 usingSpringWithDamping:1.0 initialSpringVelocity:0.6 options:0 animations:^{
         self.leftMenuViewController.view.frame = CGRectMake(-self.view.frame.size.width*leftMenuWidthPercent,
                                                             0,
                                                             self.leftMenuViewController.view.frame.size.width,
                                                             self.leftMenuViewController.view.frame.size.height);
-        self.opacityView.layer.opacity = 0.0;
+    self.opacityView.layer.opacity = 0.0;
        
         
-    } completion:^(BOOL finished) {
+    }completion:^(BOOL finished) {
         
         [self.opacityView removeFromSuperview];
         self.opacityView = nil;
@@ -272,15 +315,18 @@
             [self.mainViewController.view removeGestureRecognizer:recognizer];
         }
         
-        
     }];
     
 }
 
 
-
 - (void)showLeftPanelAnimated:(BOOL)animated
 {
+    
+    if (self.isSideBySide) {
+        return;
+    }
+    
     NSLog(@"showLeftPanelAnimated");
     [self _updateOpacityViewMax];
     [self _showLeftPanel:animated bounce:NO];
@@ -367,7 +413,9 @@
 
 - (void)setState:(IRSlideMenuPanelState)state {
     if (state != _state) {
+        
         _state = state;
+
         switch (_state) {
             case IRSlideMenuPanelCenterVisible: {
                 self.leftMenuViewController.view.userInteractionEnabled = NO;

@@ -42,6 +42,8 @@ typedef enum _IRSlideMenuPanelState {
 @property (strong) UIPanGestureRecognizer   *leftPanGesture;
 @property (strong) UISwipeGestureRecognizer *swipeRight;
 
+@property (assign) BOOL isSideBySide;
+@property (assign) CGRect isSideBySide_MainFrame;
 
 // show the panels
 - (void)showLeftPanelAnimated:(BOOL)animated;
