@@ -2,6 +2,16 @@ IRSlideMenuController (objc)
 
 -----
 
+It's kind of universal iOS app with some limitation.
+
+(For iPhone)
+
+- it is supported for potrait mode only
+
+(For iPad)
+- suitable for landscape mode as the slide become side-by-side.
+
+
 
 * in early stage of development, support left menu only.
 * recreating stuff like slide menu 

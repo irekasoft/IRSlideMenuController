@@ -22,6 +22,7 @@
 		A30BDFCE1B03BA7400DEBF28 /* MyVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A30BDFCD1B03BA7400DEBF28 /* MyVC.m */; };
 		A30BDFD11B03BBBC00DEBF28 /* ss2.png in Resources */ = {isa = PBXBuildFile; fileRef = A30BDFD01B03BBBC00DEBF28 /* ss2.png */; };
 		A30BDFD31B03BC7000DEBF28 /* ss1.png in Resources */ = {isa = PBXBuildFile; fileRef = A30BDFD21B03BC7000DEBF28 /* ss1.png */; };
+		A369AA981B16F2B800AA6882 /* SettingsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A369AA971B16F2B800AA6882 /* SettingsVC.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +62,8 @@
 		A30BDFCD1B03BA7400DEBF28 /* MyVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyVC.m; sourceTree = "<group>"; };
 		A30BDFD01B03BBBC00DEBF28 /* ss2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ss2.png; sourceTree = "<group>"; };
 		A30BDFD21B03BC7000DEBF28 /* ss1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ss1.png; sourceTree = "<group>"; };
+		A369AA961B16F2B800AA6882 /* SettingsVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsVC.h; sourceTree = "<group>"; };
+		A369AA971B16F2B800AA6882 /* SettingsVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsVC.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +109,8 @@
 			isa = PBXGroup;
 			children = (
 				A30BDFA11B03961300DEBF28 /* Main.storyboard */,
+				A369AA961B16F2B800AA6882 /* SettingsVC.h */,
+				A369AA971B16F2B800AA6882 /* SettingsVC.m */,
 				A30BDF9B1B03961300DEBF28 /* AppDelegate.h */,
 				A30BDF9C1B03961300DEBF28 /* AppDelegate.m */,
 				A30BDF9E1B03961300DEBF28 /* ViewController.h */,
@@ -273,6 +278,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A30BDFCB1B03B57B00DEBF28 /* LeftMenuVC.m in Sources */,
+				A369AA981B16F2B800AA6882 /* SettingsVC.m in Sources */,
 				A30BDFC31B03A19900DEBF28 /* UIViewController+IRSlideMenuController.m in Sources */,
 				A30BDFCE1B03BA7400DEBF28 /* MyVC.m in Sources */,
 				A30BDFA01B03961300DEBF28 /* ViewController.m in Sources */,

@@ -14,6 +14,10 @@
 
 @property (strong) UIViewController *mainViewController;
 @property (strong) UIViewController *vc2;
+@property (strong) UIViewController *vc3;
+@property (strong) UIViewController *settingsVC;
+
+
 
 @end
 
@@ -24,6 +28,11 @@
 
     self.mainViewController = self.slideMenuController.mainViewController;
     self.vc2 = [self.storyboard instantiateViewControllerWithIdentifier:@"VC2"];
+    self.vc3 = [self.storyboard instantiateViewControllerWithIdentifier:@"VC3"];
+    
+    self.settingsVC = [self.storyboard instantiateViewControllerWithIdentifier:@"Settings"];
+    
+    
     
 }
 
@@ -42,6 +51,21 @@
 
     [self.slideMenuController changeMainViewController:self.vc2 close:YES];
     
+    
+}
+
+- (IBAction)menu3:(id)sender {
+
+    
+    [self.slideMenuController changeMainViewController:self.vc3 close:YES];
+    
+}
+
+- (IBAction)settings:(id)sender {
+    
+    self.settingsVC.modalPresentationStyle = UIModalPresentationFormSheet;
+    
+    [self presentViewController:self.settingsVC animated:YES completion:nil];
     
 }
 

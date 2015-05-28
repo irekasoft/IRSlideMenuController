@@ -18,7 +18,14 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
+
+    if (self.slideMenuController.isSideBySide == NO){
+        self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemOrganize target:self action:@selector(menu:)];
+        
+    }
+    
+    
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -27,8 +34,6 @@
 }
 
 - (IBAction)menu:(id)sender {
-    
- 
     [self.slideMenuController showLeftPanelAnimated:YES];
     
 }
