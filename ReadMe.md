@@ -11,7 +11,7 @@ It's kind of universal iOS app with some limitation.
 (For iPad)
 - suitable for landscape mode as the slide become side-by-side.
 
-
+We can change these parameter at Info.plist use code view.
 
 * in early stage of development, support left menu only.
 * recreating stuff like slide menu 
