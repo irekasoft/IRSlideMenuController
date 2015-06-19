@@ -15,7 +15,7 @@
 #define WANT_SWIPE_GESTURE NO
 #define MAX_OPACITY 0.5
 #define RATIO_MENU_WIDTH 0.9
-
+#define LEFT_MENU_RATIO 0.27
 
 typedef enum _IRSlideMenuPanelState {
     IRSlideMenuPanelCenterVisible = 1,

@@ -60,7 +60,7 @@
     
     leftMenuWidthPercent = RATIO_MENU_WIDTH;
     
-    CGFloat leftToMainRatio = 0.3;
+    CGFloat leftToMainRatio = LEFT_MENU_RATIO;
 
     self.isSideBySide_MainFrame = CGRectMake(self.mainViewController.view.frame.size.width *leftToMainRatio, 0,
                                              self.mainViewController.view.frame.size.width * (1- leftToMainRatio),
